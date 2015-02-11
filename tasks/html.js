@@ -24,8 +24,8 @@ var ptc = new PromiseTaskContainer();
 // Tasks //
 //-------//
 
-var cleanDev = new PromiseTask()
-    .id('cleanDev')
+var clean = new PromiseTask()
+    .id('clean')
     .task(function() {
         return bRimraf('dev')
             .then(function() {
@@ -34,13 +34,13 @@ var cleanDev = new PromiseTask()
     });
 var copyHtml = new PromiseTask()
     .id('copyHtml')
-    .dependencies(cleanDev)
+    .dependencies(clean)
     .task(function() {
         gulp.src('src/**/*.html')
             .pipe(gulp.dest('dev'));
     });
 
-ptc.addTasks(cleanDev, copyHtml);
+ptc.addTasks(clean, copyHtml);
 
 
 //---------//
