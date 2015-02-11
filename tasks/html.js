@@ -29,6 +29,7 @@ var clean = new PromiseTask()
     .task(function() {
         return bRimraf('dev')
             .then(function() {
+                console.log('dev cleaned');
                 return bFs.mkdir('dev');
             });
     });
